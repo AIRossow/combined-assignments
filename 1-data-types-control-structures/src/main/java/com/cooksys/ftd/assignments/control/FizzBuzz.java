@@ -26,7 +26,12 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        if(b == 0)
+        	throw new IllegalArgumentException();
+    	if(a%b == 0)
+        	return true;
+        else
+        	return false;
     }
 
     /**
@@ -41,7 +46,15 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	if(divides(n,3) && divides(n,5))
+    		return(String.format("%s: FizzBuzz", n));
+    	else if(divides(n, 5))
+    		return(String.format("%s: Buzz", n));
+    	else if(divides(n, 3))
+    		return(String.format("%s: Fizz", n));
+    	else
+    		return(null);
     }
 
     /**
@@ -55,15 +68,44 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        if(start > end)throw new IllegalArgumentException();
+        
+        
+        String[] messages1 = new String [end-start];
+        int count = 0;
+        int hold = 0;
+    	String result = null;
+  
+    	for(int i = start; i < end; i++){
+    		result = message(i);
+    		if(result != null){
+    			messages1[i-start] = result;
+    			count++;
+    		}
+    	}
+    	hold = count;
+    	String[] retMessage = new String [count];
+    	for(int i = start; i < end; i++){
+    		if(messages1[i-start] != null){
+    			retMessage[hold-count] = messages1[i-start];
+    			count--;
+    		}
+    	}
+    	
+    	return retMessage;
     }
+    
 
     /**
      * For this main method, iterate over the numbers 1 through 115 and print
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+    	String[] hello = messages(1,115);
+    	
+    	for(int i = 0 ; i < 115; i++)
+    		System.out.println(hello[i]);
     }
 
 }

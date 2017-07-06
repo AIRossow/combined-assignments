@@ -24,7 +24,28 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given index is less than zero
      */
     public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    	if(i < 0) throw new IllegalArgumentException();
+    	
+    	int a = 1;
+    	int b = 1;
+    	int val = 1;
+    	
+    	if(i == 0 || i == 1)
+        	return 1;
+    	
+    	else 
+    	{
+    		for(int j = 2; j <= i; j++)
+    		{
+    			val = a + b;
+    			a = b;
+    			b = val;
+    		}
+    		return val;
+    	}
+//        
+//        else 
+//        	return (atIndex(i-1) + atIndex(i-2));
     }
 
     /**
@@ -38,7 +59,14 @@ public class Fibonacci {
      *                                  given end is less than the given start
      */
     public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        int arr[] = new int[end - start];
+    	
+        for(int i = start; i < end; i++)
+        {
+        	arr[i-start] = atIndex(i);
+        }
+        
+        return arr;
     }
 
     /**
@@ -49,6 +77,21 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        if(count < 0) throw new IllegalArgumentException();
+    	int arr[] = new int[count];
+        
+        for(int i = 0; i < count; i++)
+        {
+        	arr[i] = atIndex(i);
+        }
+        
+        return arr;
+    }
+    
+    public static void main(String[] args) {
+        //throw new NotImplementedException();
+    	for(int i = 0; i < 100; i++){	
+    	System.out.println(atIndex(i));
+    }
     }
 }
