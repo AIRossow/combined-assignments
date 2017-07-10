@@ -1,11 +1,17 @@
 package com.cooksys.ftd.assignments.file.model;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Contact {
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
 
+    @XmlAttribute(name="first-name")
     public String getFirstName() {
         return firstName;
     }
@@ -13,7 +19,8 @@ public class Contact {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    
+    @XmlAttribute(name="last-name")
     public String getLastName() {
         return lastName;
     }
@@ -22,6 +29,7 @@ public class Contact {
         this.lastName = lastName;
     }
 
+    @XmlElement(name="email")
     public String getEmail() {
         return email;
     }
@@ -30,6 +38,7 @@ public class Contact {
         this.email = email;
     }
 
+    @XmlElement(name="phone-number")
     public String getPhoneNumber() {
         return phoneNumber;
     }
