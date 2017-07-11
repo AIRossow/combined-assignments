@@ -40,6 +40,7 @@ public class Session {
         this.instructor = instructor;
     }
     @XmlElementWrapper(name="Students")
+    @XmlElement(name="Student")
     public List<Student> getStudents() {
         return students;
     }
